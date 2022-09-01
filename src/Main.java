@@ -1,11 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        Invertor artynsk = new Invertor();
-        artynsk.active = true;
-        artynsk.power = 30f;
-        artynsk.i = 5f;
-        artynsk.u = 10f;
-
+        Invertor artynsk = initInvertor(true, 30f, 5f, 10f);
         switchInvertorStatus(true, artynsk);
         System.out.println("isActive: " + artynsk.active);
         printInvertorData(artynsk);
@@ -14,15 +9,19 @@ public class Main {
         System.out.println("------------------");
         //
 
-        Invertor zelena = new Invertor();
-        zelena.active = true;
-        zelena.power = 40f;
-        zelena.i = 10f;
-        zelena.u = 10f;
-
-        switchInvertorStatus(false, zelena);
+        Invertor zelena = initInvertor(true, 40f, 10f, 10f);
+        switchInvertorStatus(true, zelena);
         System.out.println("isActive: " + zelena.active);
         printInvertorData(zelena);
+    }
+
+    private static Invertor initInvertor(boolean active, float power, float i, float u) {
+        Invertor invertor = new Invertor();
+        invertor.active = active;
+        invertor.power = power;
+        invertor.i = i;
+        invertor.u = u;
+        return invertor;
     }
 
     private static void printInvertorData(Invertor invertor) {
@@ -33,7 +32,7 @@ public class Main {
         }
     }
 
-    public static void switchInvertorStatus(boolean switchStatus, Invertor invertor) {
+    private static void switchInvertorStatus(boolean switchStatus, Invertor invertor) {
         invertor.active = switchStatus;
     }
 }
