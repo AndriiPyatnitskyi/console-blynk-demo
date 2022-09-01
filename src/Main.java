@@ -1,18 +1,15 @@
 public class Main {
     public static void main(String[] args) {
         Invertor artynsk = initInvertor(true, 30f, 5f, 10f);
-        switchInvertorStatus(true, artynsk);
-        System.out.println("isActive: " + artynsk.active);
-        printInvertorData(artynsk);
-
-        //
-        System.out.println("------------------");
-        //
-
+        processInvertor(artynsk);
         Invertor zelena = initInvertor(true, 40f, 10f, 10f);
-        switchInvertorStatus(true, zelena);
-        System.out.println("isActive: " + zelena.active);
-        printInvertorData(zelena);
+        processInvertor(zelena);
+    }
+
+    private static void processInvertor(Invertor invertor) {
+        switchInvertorStatus(true, invertor);
+        System.out.println("isActive: " + invertor.active);
+        printInvertorData(invertor);
     }
 
     private static Invertor initInvertor(boolean active, float power, float i, float u) {
