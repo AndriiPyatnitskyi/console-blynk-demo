@@ -1,25 +1,26 @@
 public class Main {
     // init data from invertor that we consume
-    static float invPower = 29.9f;
-    static float invI = 9.7f;
-    static float invU = 625.0f;
-    static boolean invActive;
+
 
     public static void main(String[] args) {
-        switchInvStatus(true);
-        System.out.println("isActive: " + invActive);
-        printInvData();
+        Invertor invertor = new Invertor();
+
+        switchInvertorStatus(true, invertor);
+
+        System.out.println("isActive: " + invertor.invActive);
+
+        printInvertorData(invertor);
     }
 
-    private static void printInvData() {
-        if (invActive) {
-            System.out.println("power: " + invPower);
-            System.out.println("i: " + invI);
-            System.out.println("u: " + invU);
+    private static void printInvertorData(Invertor invertor) {
+        if (invertor.invActive) {
+            System.out.println("power: " + invertor.invPower);
+            System.out.println("i: " + invertor.invI);
+            System.out.println("u: " + invertor.invU);
         }
     }
 
-    public static void switchInvStatus(boolean switchStatus) {
-        invActive = switchStatus;
+    public static void switchInvertorStatus(boolean switchStatus, Invertor invertor) {
+        invertor.invActive = switchStatus;
     }
 }
